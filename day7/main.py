@@ -57,12 +57,17 @@ def get_child(current, child_name):
 file_name = "test_input.txt"
 tree = file_tree_from(file_name)
 
-
 # (2) find all directories of size of 100000 or smaller
-# def calculate_answer(tree):
-    # create map in which to store nodes and their size
-    # directory_size_map: { }
-    # traverse the entire tree (DFS?)
+def traverse_tree(node):
+    if node.is_directory:
+      print("dir", node.name)
+      if len(node.children) > 0:
+        for child in node.children:
+          traverse_tree(child)
+    else:
+      print(node.size, node.name)
+
+traverse_tree(tree)
 
 # (3) calculate the sum of their total sizes
 
