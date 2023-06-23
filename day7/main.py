@@ -54,24 +54,30 @@ def get_child(current, child_name):
     else: # eww
         Exception(f"{child_name}' is not a child of '{current.name}'")
 
-file_name = "test_input.txt"
+file_name = "input.txt"
 tree = file_tree_from(file_name)
 
-# (2) find all directories of size of 100000 or smaller
-def traverse_tree(node):
+# (2) create dictionary of all directories and track their size
+directories = {}
+def get_size_of(node):
     if node.is_directory:
-      print("dir", node.name)
-      if len(node.children) > 0:
-        for child in node.children:
-          traverse_tree(child)
+        directories[node.name] = 0
+        if len(node.children) > 0:
+            children_sum = 0
+            for child in node.children:
+                children_sum = children_sum + get_size_of(child)
+            directories[node.name] = children_sum
+            return children_sum
     else:
-      print(node.size, node.name)
+        return int(node.size)
 
-traverse_tree(tree)
+get_size_of(tree)
 
 # (3) calculate the sum of their total sizes
+answer = 0
+for size in directories.values():
+    if size <= 100000:
+        answer = answer + size
 
-# data structures:
-# tree: each node is either a directory () or a file (size and name)
-# FILE: { size: <int>, name: <string>}
-# DIR
+print("Answer:", answer)
+print(directories)
