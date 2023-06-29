@@ -54,9 +54,8 @@ def get_child(current, child_name):
     else: # eww
         Exception(f"{child_name}' is not a child of '{current.name}'")
 
-file_name = "test_input.txt"
+file_name = "input.txt"
 tree = file_tree_from(file_name)
 
 # (2) add up all directories whose size is greater than 10000
-tree.print_children(0)
-# print("Answer:", tree.find_sub_directories())
+print(tree.find_sub_directories())

@@ -35,7 +35,7 @@ class FileNode:
         total = 0
         if self.is_directory:
             for child in self.children:
-                if child.is_directory and child.get_size() <= 10000:
+                if child.is_directory and child.get_size() <= 100000:
                     total += child.get_size() + child.find_sub_directories()
                 else:
                     total += child.find_sub_directories()
