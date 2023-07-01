@@ -31,11 +31,11 @@ class FileNode:
             for child in self.children:
                 child.print_children(level+1)
 
-    def find_sub_directories(self):
+    def find_sub_directories(self, filter):
         total = 0
         if self.is_directory:
             for child in self.children:
-                if child.is_directory and child.get_size() <= 100000:
+                if child.is_directory and filter(child.get_size()):
                     total += child.get_size() + child.find_sub_directories()
                 else:
                     total += child.find_sub_directories()

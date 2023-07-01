@@ -54,8 +54,30 @@ def get_child(current, child_name):
     else: # eww
         Exception(f"{child_name}' is not a child of '{current.name}'")
 
-file_name = "input.txt"
-tree = file_tree_from(file_name)
+def is_at_most_100000(number):
+    return number <= 100000
 
-# (2) add up all directories whose size is greater than 10000
-print(tree.find_sub_directories())
+def solve_part_1(tree):
+    tree = file_tree_from("input.py")
+    return tree.find_sub_directories(is_at_most_100000)
+
+# PART 1 Solution
+# print("Part 1 Solution:", tree.find_sub_directories())
+
+# PART 2
+def get_unused_space(tree):
+    total_disk_space = 70000000
+    total_size = tree.get_size()
+    return total_disk_space - total_size
+
+def get_space_to_free(unused_space):
+    space_needed = 30000000
+    space_to_free = space_needed - unused_space
+    if space_to_free <= 0:
+        space_to_free = 0
+    return space_to_free
+
+# def solve_part_2(tree, max_size):
+    # find directories greater than this size
+    # find the total size of the smallest of these directories
+
