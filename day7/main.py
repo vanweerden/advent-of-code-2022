@@ -58,13 +58,8 @@ def is_at_most_100000(number):
     return number <= 100000
 
 def solve_part_1(tree):
-    tree = file_tree_from("input.py")
     return tree.find_sub_directories(is_at_most_100000)
 
-# PART 1 Solution
-# print("Part 1 Solution:", tree.find_sub_directories())
-
-# PART 2
 def get_unused_space(tree):
     total_disk_space = 70000000
     total_size = tree.get_size()
@@ -77,7 +72,19 @@ def get_space_to_free(unused_space):
         space_to_free = 0
     return space_to_free
 
-# def solve_part_2(tree, max_size):
-    # find directories greater than this size
-    # find the total size of the smallest of these directories
+def find_candidate_directories(node, space_needed, candidates):
+    if node.is_directory:
+        if node.get_size() >= space_needed:
+            candidates.append(node.get_size())
+            for child in node.children:
+                find_candidate_directories(child, space_needed, candidates)
+    return candidates
 
+def solve_part_2(tree):
+    space_needed = get_space_to_free(get_unused_space(tree))
+    candidates = find_candidate_directories(tree, space_needed, [])
+    return min(candidates)
+
+tree = file_tree_from("input.txt")
+print("Part 1 Solution:", solve_part_1(tree))
+print("Part 2 Solution:", solve_part_2(tree))

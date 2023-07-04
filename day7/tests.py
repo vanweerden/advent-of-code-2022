@@ -20,5 +20,10 @@ class Day7Tests(unittest.TestCase):
         expected = 8381165
         self.assertEqual(actual, expected)
 
+    def test_solve_part_2(self):
+        actual = solve_part_2(self.tree)
+        expected = 24933642
+        self.assertEqual(actual, expected)
+
 if __name__ == '__main__':
     unittest.main()
