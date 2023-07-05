@@ -45,42 +45,44 @@ class Day8Tests(unittest.TestCase):
     def test_left_of__left_edge(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.left_of(0, 2)
+        actual = matrix.left_of(2, 0)
         
         expected = []
         self.assertEqual(actual, expected)
 
-    # def test_above(self):
-    #     matrix = matrix_from(self.file)
 
-    #     actual = matrix.above(4, 3)
+    def test_below(self):
+        matrix = matrix_from(self.file)
+
+        actual = matrix.below(0, 4)
         
-    #     expected = [4, 3, 1, 7]
-    #     self.assertEqual(actual, expected)
+        expected = [2, 2, 9, 0]
+        self.assertEqual(actual, expected)
 
-    # def test_above__top_edge(self):
-    #     matrix = matrix_from(self.file)
+    def test_below__bottom_edge(self):
+        matrix = matrix_from(self.file)
 
-    #     actual = matrix.above(4, 3)
+        actual = matrix.below(4, 1)
         
-    #     expected = []
-    #     self.assertEqual(actual, expected)
+        expected = []
+        self.assertEqual(actual, expected)
 
-    # def test_below(self):
-    #     matrix = matrix_from(self.file)
+    def test_above(self):
+        matrix = matrix_from(self.file)
 
-    #     actual = matrix.below(0, 4)
+        actual = matrix.above(4, 3)
         
-    #     expected = [2, 2, 9, 0]
-    #     self.assertEqual(actual, expected)
+        expected = [4, 3, 1, 7]
+        self.assertEqual(actual, expected)
 
-    # def test_below__bottom_edge(self):
-    #     matrix = matrix_from(self.file)
+    def test_above__top_edge(self):
+        matrix = matrix_from(self.file)
 
-    #     actual = matrix.below(4, 1)
+        actual = matrix.above(0, 3)
         
-    #     expected = []
-    #     self.assertEqual(actual, expected)
+        expected = []
+        self.assertEqual(actual, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
