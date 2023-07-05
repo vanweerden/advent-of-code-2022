@@ -11,6 +11,3 @@ def matrix_from(file):
         for j, char in enumerate(line):
             matrix.add_value(int(char), i, j)
     return matrix
-
-matrix = matrix_from("test_input.txt")
-matrix.print()
