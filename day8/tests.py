@@ -15,7 +15,7 @@ class Day8Tests(unittest.TestCase):
         sys.stdout = sys.__stdout__     # reset stdout redirect
         actual = capturedOutput.getvalue()
 
-        expected = f'30373\n25512\n65332\n33549\n35390\n'
+        expected = f'3 0 3 7 3 \n2 5 5 1 2 \n6 5 3 3 2 \n3 3 5 4 9 \n3 5 3 9 0 \n\n'
         self.assertEqual(actual, expected)
 
     def test_get_row(self):
@@ -30,7 +30,8 @@ class Day8Tests(unittest.TestCase):
 
     def test_is_visible_hor__middle__true(self):
         matrix = matrix_from(self.file)
-        is_visible = matrix.is_visible_hor(2, 1)
+        matrix.set_value(9, 0, 1)
+        is_visible = matrix.is_visible_hor(1, 1)
         self.assertTrue(is_visible)
 
     def test_is_visible_hor__middle__false(self):
@@ -72,6 +73,20 @@ class Day8Tests(unittest.TestCase):
         matrix = matrix_from(self.file)
         tree_count = matrix.count_visible_trees()
         self.assertEqual(tree_count, 21)
+
+    def test_is_visible__visible_hor_only__true(self):
+        matrix = matrix_from(self.file)
+        matrix.set_value(9, 0, 1)
+        is_visible = matrix.is_visible(1, 1)
+        self.assertTrue(is_visible)
+
+    def test_is_visible__visible_vert_only__true(self):
+        matrix = matrix_from(self.file)
+        matrix.set_value(9, 1, 0)
+        is_visible = matrix.is_visible(1, 1)
+        self.assertTrue(is_visible)
+
+# TEST: is_visible when visible horizontally but not vertically
 
 if __name__ == '__main__':
     unittest.main()

@@ -14,7 +14,7 @@ class Matrix:
     def print_visibility(self):
         for row_index, row in enumerate(self._matrix):
             for col_index, col in enumerate(row):
-                print("T " if self.is_visible(row_index, col_index) else "F ", end="")
+                print(f'{col}:{"T" if self.is_visible(row_index, col_index) else "F"} ', end="")
             print()
         print()
 
@@ -43,10 +43,9 @@ class Matrix:
         else:
             row = self.get_row(row_index)
             tree_height = self.get_value(row_index, col_index)
-            is_visible_right = self.is_visible_in(tree_height, row[:col_index])
+            is_visible_left = self.is_visible_in(tree_height, row[:col_index])
             is_visible_right = self.is_visible_in(tree_height, row[col_index+1:])
-   
-            return is_visible_right or is_visible_right
+            return is_visible_left or is_visible_right
         
     def is_visible_vert(self, row_index, col_index):
         # Trees on edge are always visible
