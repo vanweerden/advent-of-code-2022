@@ -11,3 +11,9 @@ def matrix_from(file):
         for j, char in enumerate(line):
             matrix.set_value(int(char), i, j)
     return matrix
+
+file = "test_input.txt"
+matrix = matrix_from(file)
+matrix.print()
+matrix.print_visibility()
+# print("Part 1:", matrix.count_visible_trees())
