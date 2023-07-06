@@ -18,71 +18,78 @@ class Day8Tests(unittest.TestCase):
         expected = f'30373\n25512\n65332\n33549\n35390\n'
         self.assertEqual(actual, expected)
 
-    def test_right_of(self):
+    def test_get_row(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.right_of(1, 1)
-        
-        expected = [5, 1, 2]
-        self.assertEqual(actual, expected)
+        actual = matrix.get_row(2)
 
-    def test_right_of__right_edge(self):
+        self.assertEqual(actual, [6, 5, 3, 3, 2])
+
+    def test_get_col(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.right_of(4, 4)
-        
-        expected = []
-        self.assertEqual(actual, expected)
+        actual = matrix.get_col(2)
 
-    def test_left_of(self):
+        self.assertEqual(actual, [3, 5, 3, 5, 3])
+
+    def test_is_visible_hor__middle__true(self):
+        matrix = matrix_from(self.file)
+        matrix.set_value(9, 1, 2)
+
+        is_visible = matrix.is_visible_hor(1, 2)
+
+        self.assertTrue(is_visible)
+
+    def test_is_visible_hor__middle__false(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.left_of(3, 3)
-        
-        expected = [5, 3, 3]
-        self.assertEqual(actual, expected)
+        is_visible = matrix.is_visible_hor(2, 2)
 
-    def test_left_of__left_edge(self):
+        self.assertFalse(is_visible)
+
+    def test_is_visible_hor__left_edge__true(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.left_of(2, 0)
-        
-        expected = []
-        self.assertEqual(actual, expected)
+        is_visible = matrix.is_visible_hor(1, 0)
+
+        self.assertTrue(is_visible)
 
 
-    def test_below(self):
+    def test_is_visible_hor__right_edge__true(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.below(0, 4)
-        
-        expected = [2, 2, 9, 0]
-        self.assertEqual(actual, expected)
+        is_visible = matrix.is_visible_hor(1, 4)
 
-    def test_below__bottom_edge(self):
+        self.assertTrue(is_visible)
+
+    def test_is_visible_vert__middle__true(self):
+        matrix = matrix_from(self.file)
+        matrix.set_value(9, 1, 2)
+
+        is_visible = matrix.is_visible_vert(1, 2)
+
+        self.assertTrue(is_visible)
+
+    def test_is_visible_vert__middle__false(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.below(4, 1)
-        
-        expected = []
-        self.assertEqual(actual, expected)
+        is_visible = matrix.is_visible_vert(2, 2)
 
-    def test_above(self):
+        self.assertFalse(is_visible)
+
+    def test_is_visible_vert__top_edge__true(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.above(4, 3)
-        
-        expected = [4, 3, 1, 7]
-        self.assertEqual(actual, expected)
+        is_visible = matrix.is_visible_vert(1, 0)
 
-    def test_above__top_edge(self):
+        self.assertTrue(is_visible)
+
+
+    def test_is_visible_vert__bottom_edge__true(self):
         matrix = matrix_from(self.file)
 
-        actual = matrix.above(0, 3)
-        
-        expected = []
-        self.assertEqual(actual, expected)
+        is_visible = matrix.is_visible_vert(1, 4)
 
-
+        self.assertTrue(is_visible)
 if __name__ == '__main__':
     unittest.main()

@@ -10,28 +10,54 @@ class Matrix:
                 print(col, end="")
             print()
 
-    def add_value(self, val, row_index, col_index):
+    def set_value(self, val, row_index, col_index):
         self._matrix[row_index][col_index] = val
 
     def get_value(self, row_index, col_index):
         return self._matrix[row_index][col_index]
     
-    def right_of(self, row, starting_col):
-        return self._matrix[row][starting_col+1:]
-
-    def left_of(self, row, end_col):
-        return list(reversed(self._matrix[row][:end_col]))
-
-    def below(self, starting_row, col):
+    def get_row(self, row_index):
+        return self._matrix[row_index]
+    
+    def get_col(self, col_index):
         values = []
-        for row in self._matrix[starting_row+1:]:
-            values.append(row[col])
+        for row in self._matrix:
+            values.append(row[col_index])
         return values
-
-    def above(self, starting_row, col):
-        values = []
-        for row in reversed(self._matrix[:starting_row]):
-            values.append(row[col])
-        return values
+   
+    def is_visible_hor(self, row_index, col_index):
+        # Trees on edge are always visible
+        if col_index == 0 or col_index == self._width-1:
+            return True
+        else:
+            row = self.get_row[row_index]
+            tree_height = self.get_value(row_index, col_index)
+            # Remove tree in question from row
+            other_trees = row[:col_index] + row[col_index+1:]
+            is_visible = True
+            for t in other_trees:
+                if t >= tree_height:
+                    is_visible = False
+            return is_visible
         
-    # TODO: Diagonal methods
+    def is_visible_vert(self, row_index, col_index):
+        # Trees on edge are always visible
+        if row_index == 0 or row_index == self._height-1:
+            return True
+        else:
+            col = self.get_col[col_index]
+            tree_height = self.get_value(row_index, col_index)
+            # Remove tree in question from col
+            other_trees = col[:row_index] + col[row_index+1:]
+            is_visible = True
+            for t in other_trees:
+                if t >= tree_height:
+                    is_visible = False
+            return is_visible
+        
+    # def count_visible_trees():
+
+    # TODO: 
+    # 1. Get tests to pass
+    # 2. Add count_visible_trees function and solve problem
+    # 3. Refactor: is_visible_hor and is_visible_vert repeat steps. Can I extract code to new method?

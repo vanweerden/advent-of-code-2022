@@ -9,5 +9,5 @@ def matrix_from(file):
     matrix = Matrix(height, width)
     for i, line in enumerate(lines):
         for j, char in enumerate(line):
-            matrix.add_value(int(char), i, j)
+            matrix.set_value(int(char), i, j)
     return matrix
