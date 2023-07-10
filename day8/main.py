@@ -12,7 +12,7 @@ def matrix_from(file):
             matrix.set_value(int(char), i, j)
     return matrix
 
-# file = "input.txt"
-# matrix = matrix_from(file)
-# print("Part 1:", matrix.count_visible_trees())
-# print("Part 2:", matrix.get_highest_scenic_score())
+file = "input.txt"
+matrix = matrix_from(file)
+print("Part 1:", matrix.count_visible_trees())
+print("Part 2:", matrix.get_highest_scenic_score())
