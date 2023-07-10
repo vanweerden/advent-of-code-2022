@@ -124,5 +124,13 @@ class Matrix:
         trees_below = self.count_trees_below(row_index, col_index)
         trees_on_right = self.count_trees_on_right(row_index, col_index)
         trees_on_left = self.count_trees_on_left(row_index, col_index)
-        print(trees_above, trees_below, trees_on_right, trees_on_left)
         return trees_above * trees_below * trees_on_right * trees_on_left
+    
+    def get_highest_scenic_score(self):
+        highest = 0
+        for row_index, row in enumerate(self._matrix):
+            for col_index in range(len(row)):
+                current_score = self.calculate_scenic_score(row_index, col_index)
+                if current_score > highest:
+                    highest = current_score
+        return highest

@@ -112,9 +112,9 @@ class Day8Tests(unittest.TestCase):
         actual = matrix.calculate_scenic_score(1, 2)
         self.assertEqual(actual, 4)
 
-    def test_get_hightest_scenic_score(self):
+    def test_get_highest_scenic_score(self):
         matrix = matrix_from(self.file)
-        actual = matrix.get_hightest_scenic_score()
+        actual = matrix.get_highest_scenic_score()
         self.assertEqual(actual, 8)
 
 if __name__ == '__main__':
