@@ -86,7 +86,36 @@ class Day8Tests(unittest.TestCase):
         is_visible = matrix.is_visible(1, 1)
         self.assertTrue(is_visible)
 
-# TEST: is_visible when visible horizontally but not vertically
+    def test_count_trees_above(self):
+        matrix = matrix_from(self.file)
+        actual = matrix.count_trees_above(1, 2)
+        print(actual)
+        self.assertEqual(actual, 1)
+
+    def test_count_trees_on_left(self):
+        matrix = matrix_from(self.file)
+        actual = matrix.count_trees_on_left(1, 2)
+        self.assertEqual(actual, 1)
+    
+    def test_count_trees_on_right(self):
+        matrix = matrix_from(self.file)
+        actual = matrix.count_trees_on_right(1, 2)
+        self.assertEqual(actual, 2)
+
+    def test_count_trees_below(self):
+        matrix = matrix_from(self.file)
+        actual = matrix.count_trees_below(1, 2)
+        self.assertEqual(actual, 2)
+
+    def test_calculate_scenic_score(self):
+        matrix = matrix_from(self.file)
+        actual = matrix.calculate_scenic_score(1, 2)
+        self.assertEqual(actual, 4)
+
+    def test_get_hightest_scenic_score(self):
+        matrix = matrix_from(self.file)
+        actual = matrix.get_hightest_scenic_score()
+        self.assertEqual(actual, 8)
 
 if __name__ == '__main__':
     unittest.main()
