@@ -5,11 +5,6 @@ class Rope:
         self.tail_row = tail_row
         self.tail_col = tail_col
 
-    # def tail_is_touching_head(self):
-    #     x_check = abs(self.tail_row - self.head_row) < 2
-    #     y_check = abs(self.tail_col - self.head_col) < 2
-    #     return x_check and y_check
-    
     def move_head(self, direction):
         # takes direction ("R 4"), parses it, and moves the head into that position
         # move tail automatically
@@ -19,22 +14,40 @@ class Rope:
         col_diff = self.head_col - self.tail_col
         row_diff = self.head_row - self.tail_row
 
-        # same row and col is 2+ steps away => tail_row goes adjacent to head_row
-        if (row_diff == 0 and col_diff >= 2):
-            # move to left of head
-            self.tail_col = self.head_col-1
-        # same row: tail is 2+ spaces to the left
-        elif (row_diff == 0 and col_diff <= -2):
+        if (self.is_left_and_not_adjacent(row_diff, col_diff)):
+            self.move_tail_to_left_of_head()
+        elif (self.is_right_and_not_adjacent(row_diff, col_diff)):
             self.tail_col = self.head_col+1
+            self.move_tail_to_right_of_head()
+        elif (self.is_above_and_not_adjacent(row_diff, col_diff)):
+            self.move_tail_above_head()
+        elif (self.is_below_and_not_adjacent(row_diff, col_diff)):
+            self.move_tail_below_head()
 
-        # same col: tail is 2+ spaces above
-        elif (col_diff == 0 and row_diff >= 2):
-            # move above head
-            self.tail_row = self.head_row-1
-        # same col: tail is 2+ spaces below
-        elif (col_diff == 0 and row_diff <= -2):
-            self.tail_row = self.head_row+1
+    def is_left_and_not_adjacent(self, row_diff, col_diff):
+        return abs(row_diff) <= 1 and col_diff == 2
 
-        
-        # same col and row is 2+ steps away => tail_col goes adjecent to head_col
-        # TODO: figure out diagonal
+    def is_right_and_not_adjacent(self, row_diff, col_diff):
+        return abs(row_diff) <= 1 and col_diff == -2
+
+    def is_below_and_not_adjacent(self, row_diff, col_diff):
+        return abs(col_diff) <= 1 and row_diff == -2
+
+    def is_above_and_not_adjacent(self, row_diff, col_diff):
+        return abs(col_diff) <= 1 and row_diff == 2
+
+    def move_tail_to_left_of_head(self):
+        self.tail_row = self.head_row 
+        self.tail_col = self.head_col-1
+
+    def move_tail_to_right_of_head(self):
+        self.tail_row = self.head_row 
+        self.tail_col = self.head_col+1
+
+    def move_tail_above_head(self):
+        self.tail_row = self.head_row-1 
+        self.tail_col = self.head_col
+
+    def move_tail_below_head(self):
+        self.tail_row = self.head_row+1 
+        self.tail_col = self.head_col
