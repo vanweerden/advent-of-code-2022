@@ -1,20 +1,4 @@
 """
-Another Matrix problem!
-TODO: Write tests for update_tail_pos using examples
-    x hor
-    x vert
-    x on top
-    x diagonal
-TODO: Write tests for move_head and get them to pass
-    - R 4
-    - U 4
-    - L 3
-    - D 1
-    - R 4
-    - D 1
-    - L 5
-    - R 2
-TODO: Get tests to pass
 
 Main:
 1) Feed all directions to rope
@@ -28,3 +12,7 @@ CLASSES
     * METHOD: move head given instruction and update tail position after each step
 - Matrix to mark which positions tail has visited (simple mark as True)
 """
+
+file = "input.txt"
+def solve_part_1(input):
+    

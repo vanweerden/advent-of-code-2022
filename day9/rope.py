@@ -6,9 +6,16 @@ class Rope:
         self.tail_col = tail_col
 
     def move_head(self, direction):
-        # takes direction ("R 4"), parses it, and moves the head into that position
-        # move tail automatically
-        self.update_tail_pos()        
+        if direction == "R":
+            self.head_col += 1
+        elif direction == "L":
+            self.head_col -= 1
+        elif direction == "U":
+            self.head_row -= 1
+        elif diection == "D":
+            self.head_row += 1
+
+        self.update_tail_pos() 
 
     def update_tail_pos(self):
         col_diff = self.head_col - self.tail_col
