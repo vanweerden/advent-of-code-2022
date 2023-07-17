@@ -12,10 +12,10 @@ class Rope:
             self.head_col -= 1
         elif direction == "U":
             self.head_row -= 1
-        elif diection == "D":
+        elif direction == "D":
             self.head_row += 1
 
-        self.update_tail_pos() 
+        self.update_tail_pos()
 
     def update_tail_pos(self):
         col_diff = self.head_col - self.tail_col

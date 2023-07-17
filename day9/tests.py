@@ -300,5 +300,11 @@ class DayNineTests(unittest.TestCase):
         self.assertEqual(rope.tail_row, tail_row)
         self.assertEqual(rope.tail_col, tail_col)
 
+    def test_count_tail_positions(self):
+        actual = count_tail_positions(self.file)
+        expected = 13
+
+        self.assertEqual(actual, expected)
+
 if __name__ == '__main__':
     unittest.main()
