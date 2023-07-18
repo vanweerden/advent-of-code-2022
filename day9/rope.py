@@ -10,9 +10,10 @@ class Rope:
             self.head_col += 1
         elif direction == "L":
             self.head_col -= 1
-        elif direction == "U":
-            self.head_row -= 1
+        # "up" and "down" are reversed so the "bottom" row is row 0
         elif direction == "D":
+            self.head_row -= 1
+        elif direction == "U":
             self.head_row += 1
 
         self.update_tail_pos()
