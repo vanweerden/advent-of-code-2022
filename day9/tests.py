@@ -302,7 +302,7 @@ class DayNineTests(unittest.TestCase):
 
     def test_count_tail_positions(self):
         actual = count_tail_positions(self.file)
-        expected = 13
+        expected = 15
 
         self.assertEqual(actual, expected)
 
