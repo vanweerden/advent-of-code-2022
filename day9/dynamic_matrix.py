@@ -12,7 +12,6 @@ class DynamicMatrix:
         self.matrix[row_index][col_index] = self._mark_val
 
     def add_row(self, index):
-        # TODO: Check that index is onle +1 or -1 from max indices. If not, add intermediate rows
         new_row = dict([(i, self._empty_val) for i in self.get_column_indices()])
         self.matrix[index] = new_row
 
@@ -24,6 +23,12 @@ class DynamicMatrix:
     def get_column_indices(self):
         # Assumes there will always be a 0th row
         return list(self.matrix[0].keys())
+    
+    def get_max_col(self):
+        return max(self.matrix[0].keys())
+    
+    def get_max_row(self):
+        return max(self.matrix.keys())
 
     def print(self):
         print()

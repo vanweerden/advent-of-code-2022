@@ -24,10 +24,8 @@ def count_tail_positions(file):
 
         for _ in range(distance):
             rope.move_head(direction)
-            if rope.head_row > 0 or rope.head_col > 0:
-                matrix.mark(rope.tail_row, rope.tail_col)
+            matrix.mark(rope.tail_row, rope.tail_col)
 
     return count_visited(matrix.matrix)
 
-# TODO: Answer is too low!
 print("Part 1:", count_tail_positions("input.txt"))
