@@ -13,7 +13,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 3
         tail_row = 1
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -26,7 +26,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 1
         tail_row = 1
         tail_col = 3
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -39,7 +39,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 1
         tail_col = 3
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -56,7 +56,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 1
         tail_row = 3
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, head_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -72,7 +72,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 1
         tail_row = 1
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -88,7 +88,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 1
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -100,7 +100,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 1
         tail_col = 2
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -117,7 +117,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 3
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -133,7 +133,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 3
         tail_col = 3
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -149,7 +149,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 2
         tail_col = 0
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -165,7 +165,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 1
         tail_col = 0
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -181,7 +181,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 1
         tail_row = 0
         tail_col = 0
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -197,7 +197,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 1
         tail_row = 0
         tail_col = 2
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -213,7 +213,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 0
         tail_row = 1
         tail_col = 2
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -229,7 +229,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 0
         tail_row = 3
         tail_col = 2
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -245,7 +245,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 2
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -261,7 +261,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 0
         tail_col = 1
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -277,7 +277,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 0
         tail_col = 3
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
@@ -293,7 +293,7 @@ class DayNineTests(unittest.TestCase):
         head_col = 2
         tail_row = 2
         tail_col = 3
-        rope = Rope(head_row, head_col, tail_row, tail_col)
+        rope = Rope(1)
 
         rope.update_tail_pos()
 
