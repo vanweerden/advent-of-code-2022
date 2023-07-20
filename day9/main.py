@@ -13,8 +13,8 @@ def count_visited(matrix):
                 total += 1
     return total
 
-def count_tail_positions(file):
-    rope = Rope(2)
+def count_tail_positions(file, rope_size):
+    rope = Rope(rope_size)
     matrix = DynamicMatrix()
     lines = get_lines(file)
 
@@ -25,21 +25,14 @@ def count_tail_positions(file):
         for _ in range(distance):
             rope.move_head(direction)
             tail = rope.get_tail()
-            print(tail)
             matrix.mark(tail[0], tail[1])
 
     return count_visited(matrix.matrix)
 
-# print("Part 1:", count_tail_positions("input.txt"))
-
+# print("Part 1:", count_tail_positions("input.txt"), 2)
+# print("Part 2:", count_tail_positions("input.txt"), 10)
 # PART 2
-# rope is how 10 knots long!
-# each knot behaves like the tail in part 1 when the knot ahead of it moves
-# 
-# (x) amend Rope so you can choose length
-# (2) get tests to pass
-# (3) when head moves, update all points in rope
-# (4) the tail is the last point: track this as usual
+
 
 
 """ LEARNINGS

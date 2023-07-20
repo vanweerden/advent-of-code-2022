@@ -4,9 +4,7 @@ from main import *
 from rope import Rope
 
 class DayNineTests(unittest.TestCase):
-    file = "test_input.txt"
-
-    # UPDATE TAIL: HORIZONTAL MOVES
+    # PART 1 TESTS
     def test__update_tail_pos__hor_move_right__tail_moves_right(self):
         #.T.H. -> ..TH.
         head_row = 1
@@ -17,7 +15,7 @@ class DayNineTests(unittest.TestCase):
         rope.set_head(head_row, head_col)
 
         rope.set_tail(tail_row, tail_col)
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row)
         self.assertEqual(rope.get_tail()[1], head_col-1)
@@ -33,7 +31,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], 1)
         self.assertEqual(rope.get_tail()[1], 2)
@@ -48,12 +46,11 @@ class DayNineTests(unittest.TestCase):
         rope.set_head(head_row, head_col)
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
 
-    # # UPDATE TAIL: VERTICAL MOVES
     def test__update_tail_pos__vert_move_up__tail_moves_up(self):
         # .     .
         # H ->  H
@@ -66,7 +63,7 @@ class DayNineTests(unittest.TestCase):
         rope = Rope(2)
         rope.set_head(head_row, head_col)
         rope.set_tail(tail_row, tail_col)
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], 2)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -85,7 +82,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], 2)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -104,7 +101,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -119,12 +116,11 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
 
-    # UPDATE TAIL: DIAGONAL
     def test__update_tail_pos__bottom_left__moves_below(self):
         # .....     .....
         # ..H..     ..H..
@@ -137,7 +133,7 @@ class DayNineTests(unittest.TestCase):
         rope = Rope(2)
         rope.set_head(head_row, head_col)
         rope.set_tail(tail_row, tail_col)
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row+1)
         self.assertEqual(rope.get_tail()[1], head_col)
@@ -156,7 +152,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row+1)
         self.assertEqual(rope.get_tail()[1], head_col)
@@ -175,7 +171,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row)
         self.assertEqual(rope.get_tail()[1], head_col-1)
@@ -194,7 +190,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row)
         self.assertEqual(rope.get_tail()[1], head_col-1)
@@ -213,7 +209,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row-1)
         self.assertEqual(rope.get_tail()[1], head_col)
@@ -232,7 +228,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row-1)
         self.assertEqual(rope.get_tail()[1], head_col)
@@ -251,7 +247,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row)
         self.assertEqual(rope.get_tail()[1], head_col+1)
@@ -270,7 +266,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], head_row)
         self.assertEqual(rope.get_tail()[1], head_col+1)
@@ -289,7 +285,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -308,7 +304,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -327,7 +323,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -346,7 +342,7 @@ class DayNineTests(unittest.TestCase):
 
         rope.set_tail(tail_row, tail_col)
 
-        rope.update_tail_pos()
+        rope.update_pos(1)
 
         self.assertEqual(rope.get_tail()[0], tail_row)
         self.assertEqual(rope.get_tail()[1], tail_col)
@@ -358,6 +354,12 @@ class DayNineTests(unittest.TestCase):
     def set_tail(self, rope, row, col):
         rope._knots[len(rope._knots)-1][0] = row
         rope._knots[len(rope._knots)-1][1] = col
+
+    def test_count_tail_positions_part_1(self):
+        self.assertEqual(count_tail_positions("test_input.txt", 2), 15)
+
+    def test_count_tail_positions_part_2(self):
+        self.assertEqual(count_tail_positions("test_input_2.txt", 10), 36)
 
 if __name__ == '__main__':
     unittest.main()

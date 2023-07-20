@@ -16,7 +16,6 @@ class DynamicMatrix:
         self.matrix[index] = new_row
 
     def add_col(self, index):
-        # TODO: Check that index is onle +1 or -1 from max indices. If not, add intermediate columns
         for row in self.matrix.keys():
             self.matrix[row][index] = self._empty_val
 
@@ -33,8 +32,8 @@ class DynamicMatrix:
     def print(self):
         print()
         # reversed to treat row 0 as the "bottom" row
-        for row in reversed(self.matrix):
-            for col in row:
+        for row in reversed(self.matrix.keys()):
+            for col in self.matrix[row].values():
                 print(col, end=" ")
             print()
         print()

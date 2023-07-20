@@ -16,13 +16,14 @@ class Rope:
         elif direction == "U":
             self._knots[0][0] += 1
 
-        self.update_tail_pos()
+        for i in range(1, len(self._knots)):
+            self.update_pos(i)
 
-    def update_tail_pos(self):
-        # (1) get to work with length of 1
-        # (2) iterate over all knots
-        col_diff = self.get_col(self.get_head()) - self.get_col(self.get_tail())
-        row_diff = self.get_row(self.get_head()) - self.get_row(self.get_tail())
+    def update_pos(self, knot_index):
+        curr_knot = self._knots[knot_index]
+        prev_knot = self._knots[knot_index-1]
+        col_diff = self.get_col(prev_knot) - self.get_col(curr_knot)
+        row_diff = self.get_row(prev_knot) - self.get_row(curr_knot)
 
         if (self.is_left_and_not_adjacent(row_diff, col_diff)):
             self.move_tail_to_left_of_head()
