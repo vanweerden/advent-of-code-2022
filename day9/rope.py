@@ -39,11 +39,15 @@ class Rope:
     def get_col(self, knot):
         return knot[1]
 
-    def get_tail(self):
-        return self._knots[len(self._knots)-1]
-    
     def get_head(self):
         return self._knots[0]
+
+    def get_tail(self):
+        return self._knots[len(self._knots)-1]
+
+    def set_head(self, row, col):
+        self._knots[0][0] = row
+        self._knots[0][1] = col
 
     def set_tail(self, row, col):
         self._knots[len(self._knots)-1][0] = row
