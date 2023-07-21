@@ -26,13 +26,13 @@ class Rope:
         row_diff = self.get_row(prev_knot) - self.get_row(curr_knot)
 
         if (self.is_left_and_not_adjacent(row_diff, col_diff)):
-            self.move_tail_to_left_of_head()
+            self.move_to_left_of_prev(knot_index)
         elif (self.is_right_and_not_adjacent(row_diff, col_diff)):
-            self.move_tail_to_right_of_head()
+            self.move_to_right_of_prev(knot_index)
         elif (self.is_above_and_not_adjacent(row_diff, col_diff)):
-            self.move_tail_above_head()
+            self.move_above_prev(knot_index)
         elif (self.is_below_and_not_adjacent(row_diff, col_diff)):
-            self.move_tail_below_head()
+            self.move_below_prev(knot_index)
 
     def get_row(self, knot):
         return knot[0]
@@ -47,12 +47,11 @@ class Rope:
         return self._knots[len(self._knots)-1]
 
     def set_head(self, row, col):
-        self._knots[0][0] = row
-        self._knots[0][1] = col
+        self.set_pos(0, row, col)
 
-    def set_tail(self, row, col):
-        self._knots[len(self._knots)-1][0] = row
-        self._knots[len(self._knots)-1][1] = col
+    def set_pos(self, knot_index, row, col):
+        self._knots[knot_index][0] = row
+        self._knots[knot_index][1] = col
     
     def is_left_and_not_adjacent(self, row_diff, col_diff):
         return abs(row_diff) <= 1 and col_diff == 2
@@ -66,22 +65,22 @@ class Rope:
     def is_above_and_not_adjacent(self, row_diff, col_diff):
         return abs(col_diff) <= 1 and row_diff == 2
 
-    def move_tail_to_left_of_head(self):
-        new_row = self.get_row(self.get_head())
-        new_col = self.get_col(self.get_head())-1
-        self.set_tail(new_row, new_col)
+    def move_to_left_of_prev(self, knot_index):
+        prev_row = self.get_row(self._knots[knot_index-1])
+        prev_col = self.get_col(self._knots[knot_index-1])
+        self.set_pos(knot_index, prev_row, prev_col-1)
 
-    def move_tail_to_right_of_head(self):
-        new_row = self.get_row(self.get_head()) 
-        new_col = self.get_col(self.get_head())+1
-        self.set_tail(new_row, new_col)
+    def move_to_right_of_prev(self, knot_index):
+        prev_row = self.get_row(self._knots[knot_index-1]) 
+        prev_col = self.get_col(self._knots[knot_index-1])
+        self.set_pos(knot_index, prev_row, prev_col+1)
 
-    def move_tail_above_head(self):
-        new_row = self.get_row(self.get_head())-1 
-        new_col = self.get_col(self.get_head())
-        self.set_tail(new_row, new_col)
+    def move_above_prev(self, knot_index):
+        prev_row = self.get_row(self._knots[knot_index-1])
+        prev_col = self.get_col(self._knots[knot_index-1])
+        self.set_pos(knot_index, prev_row-1, prev_col)
 
-    def move_tail_below_head(self):
-        new_row = self.get_row(self.get_head())+1 
-        new_col = self.get_col(self.get_head())
-        self.set_tail(new_row, new_col)
+    def move_below_prev(self, knot_index):
+        prev_row = self.get_row(self._knots[knot_index-1])
+        prev_col = self.get_col(self._knots[knot_index-1])
+        self.set_pos(knot_index, prev_row+1, prev_col)

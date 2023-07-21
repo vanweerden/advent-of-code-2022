@@ -1,15 +1,19 @@
 class DynamicMatrix:
-    def __init__(self):
-        self._empty_val = False
-        self._mark_val = True
+    def __init__(self, empty_val=False, mark_val=True):
+        self._empty_val = empty_val
+        self._mark_val = mark_val
         self.matrix = { 0: { 0: self._mark_val }}
 
-    def mark(self, row_index, col_index):
+    def mark(self, row_index, col_index, val=None):
+        if val == None:
+            val = self._mark_val
+            
         if row_index not in self.matrix:
             self.add_row(row_index)
         if col_index not in self.matrix[row_index]:
             self.add_col(col_index)
-        self.matrix[row_index][col_index] = self._mark_val
+
+        self.matrix[row_index][col_index] = val
 
     def add_row(self, index):
         new_row = dict([(i, self._empty_val) for i in self.get_column_indices()])

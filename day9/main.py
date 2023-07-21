@@ -26,14 +26,15 @@ def count_tail_positions(file, rope_size):
             rope.move_head(direction)
             tail = rope.get_tail()
             matrix.mark(tail[0], tail[1])
-
     return count_visited(matrix.matrix)
+
+"""
+TODO: Debug update_pos. Only knots knots 0-5 are being moved!
+
+"""
 
 # print("Part 1:", count_tail_positions("input.txt"), 2)
 # print("Part 2:", count_tail_positions("input.txt"), 10)
-# PART 2
-
-
 
 """ LEARNINGS
 1. A matrix can be made out of dictionaries rather than lists. This lets you (1) dynamically add rows and columns, and (2) add rows and cols to negative indices.
