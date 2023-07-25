@@ -28,10 +28,7 @@ def count_tail_positions(file, rope_size):
             matrix.mark(tail[0], tail[1])
     return count_visited(matrix.matrix)
 
-"""
-TODO: Debug update_pos. Only knots knots 0-5 are being moved!
-
-"""
+# TODO: debug update_pos (off by one error in all tests) 
 
 # print("Part 1:", count_tail_positions("input.txt"), 2)
 # print("Part 2:", count_tail_positions("input.txt"), 10)

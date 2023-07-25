@@ -355,11 +355,11 @@ class DayNineTests(unittest.TestCase):
         rope._knots[len(rope._knots)-1][0] = row
         rope._knots[len(rope._knots)-1][1] = col
 
-    # def test_count_tail_positions_part_1(self):
-    #     self.assertEqual(count_tail_positions("test_input.txt", 2), 15)
+    def test_count_tail_positions_part_1(self):
+        self.assertEqual(count_tail_positions("test_input.txt", 2), 15)
 
-    def test_count_tail_positions_part_2(self):
-        self.assertEqual(count_tail_positions("test_input_2.txt", 10), 36)
+    # def test_count_tail_positions_part_2(self):
+    #     self.assertEqual(count_tail_positions("test_input_2.txt", 10), 36)
 
 if __name__ == '__main__':
     unittest.main()
