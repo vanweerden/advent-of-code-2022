@@ -28,10 +28,8 @@ def count_tail_positions(file, rope_size):
             matrix.mark(tail[0], tail[1])
     return count_visited(matrix.matrix)
 
-# TODO: debug update_pos (off by one error in all tests) 
-
-# print("Part 1:", count_tail_positions("input.txt"), 2)
-# print("Part 2:", count_tail_positions("input.txt"), 10)
+print("Part 1:", count_tail_positions("input.txt", 2))
+print("Part 2:", count_tail_positions("input.txt", 10))
 
 """ LEARNINGS
 1. A matrix can be made out of dictionaries rather than lists. This lets you (1) dynamically add rows and columns, and (2) add rows and cols to negative indices.

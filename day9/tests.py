@@ -28,7 +28,6 @@ class DayNineTests(unittest.TestCase):
         tail_col = 3
         rope = Rope(2)
         rope.set_head(head_row, head_col)
-
         self.set_tail(rope, tail_row, tail_col)
 
         rope.update_pos(1)
@@ -358,8 +357,8 @@ class DayNineTests(unittest.TestCase):
     def test_count_tail_positions_part_1(self):
         self.assertEqual(count_tail_positions("test_input.txt", 2), 15)
 
-    # def test_count_tail_positions_part_2(self):
-    #     self.assertEqual(count_tail_positions("test_input_2.txt", 10), 36)
+    def test_count_tail_positions_part_2(self):
+        self.assertEqual(count_tail_positions("test_input_2.txt", 10), 36)
 
 if __name__ == '__main__':
     unittest.main()

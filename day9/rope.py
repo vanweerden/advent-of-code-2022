@@ -24,7 +24,7 @@ class Rope:
         prev_knot = self._knots[knot_index-1]
         col_diff = self.get_col(prev_knot) - self.get_col(curr_knot)
         row_diff = self.get_row(prev_knot) - self.get_row(curr_knot)
-        
+
         # if either row or col is 2 or more spaces away
         if (self.is_not_adjacent(row_diff, col_diff)):
             # move col and row one space in direction of diff
@@ -60,7 +60,7 @@ class Rope:
         self._knots[knot_index][1] = col
     
     def is_not_adjacent(self, row_diff, col_diff):
-        return col_diff >= 2 or row_diff >= 2
+        return abs(col_diff) >= 2 or abs(row_diff) >= 2
 
     def move_to_left_of_prev(self, knot_index):
         curr_row = self.get_row(self._knots[knot_index])
