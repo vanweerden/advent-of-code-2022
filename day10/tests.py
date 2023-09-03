@@ -65,5 +65,12 @@ class DayTenTests(unittest.TestCase):
         cpu.run()
         self.assertEqual(cpu.x, -1)
 
+    def test_cpu_add_signal_strength(self):
+        call_stack = parse_instructions("test_input.txt")
+        watch_list = 20, 60, 100, 140, 180, 220
+        cpu = CPU(call_stack, watch_list)
+        cpu.run()
+        self.assertEqual(cpu.total_signal_strength, 13140)
+
 if __name__ == '__main__':
     unittest.main()
