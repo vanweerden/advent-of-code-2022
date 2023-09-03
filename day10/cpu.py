@@ -18,6 +18,8 @@ class CPU:
             self.noop()
         elif (instruction.opcode == "addx"):
             self.addx(instruction.arg)
+        if (self._verbose_mode):
+            print(f'[DEBUG] x: { self.x }')
 
     def addx(self, v):
         required_cycles = 2

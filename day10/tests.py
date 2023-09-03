@@ -43,5 +43,27 @@ class DayTenTests(unittest.TestCase):
         invalid_instruction = Instruction("addx", "foo")
         self.assertRaises(Exception, cpu.execute, invalid_instruction)
 
+    def test_parse_instruction__with_argument__opocode_parsed_correctly(self):
+        instruction = parse_instruction("addx -5")
+        self.assertEqual(instruction.opcode, "addx")
+
+    def test_parse_instruction__with_argument__arg_parsed_correctly(self):
+        instruction = parse_instruction("addx -5")
+        self.assertEqual(instruction.arg, -5)
+
+    def test_parse_instruction__no_argument__opcode_parsed_correctly(self):
+        instruction = parse_instruction("noop")
+        self.assertEqual(instruction.opcode, "noop")
+
+    def test_parse_instruction__no_argument__arg_parsed_correctly(self):
+        instruction = parse_instruction("noop")
+        self.assertEqual(instruction.arg, None)
+
+    def test_cpu_run__x_register_correct(self):
+        call_stack = parse_instructions("test_input_basic.txt")
+        cpu = CPU(call_stack)
+        cpu.run()
+        self.assertEqual(cpu.x, -1)
+
 if __name__ == '__main__':
     unittest.main()
