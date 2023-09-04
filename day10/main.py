@@ -23,3 +23,28 @@ def solve_part_1():
 
 print("PART 1")
 print(solve_part_1())
+
+# sprite is 3 pixels wide
+# x register is middle of sprite
+# Screen draws single pixel during each cpu cycle
+# screen produces # if sprite is visible or . if not
+
+# Cycle   1 -> ######################################## <- Cycle  40
+# Cycle  41 -> ######################################## <- Cycle  80
+# Cycle  81 -> ######################################## <- Cycle 120
+# Cycle 121 -> ######################################## <- Cycle 160
+# Cycle 161 -> ######################################## <- Cycle 200
+# Cycle 201 -> ######################################## <- Cycle 240
+
+# print out resulting image (this is what I should get from the example)
+
+##..##..##..##..##..##..##..##..##..##..
+###...###...###...###...###...###...###.
+####....####....####....####....####....
+#####.....#####.....#####.....#####.....
+######......######......######......####
+#######.......#######.......#######.....
+
+# timing will be tricky here: distinction between DURING cycle and AFTER cycle important
+# sprite pixels drawin during cycle; result of opcode occurs after cycle
+# TODO : Watch Racing the Beam
