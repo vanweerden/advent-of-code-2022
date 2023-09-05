@@ -8,6 +8,8 @@ def parse_instruction(line):
     return Instruction(opcode, arg)
 
 def parse_instructions(file_name):
+    # TODO: Reverse the list of instructions so first instructions is popped of first (like a real stack)
+
     with open(file_name) as f:
         instructions = []
         for line in f.read().splitlines():
@@ -24,10 +26,22 @@ def solve_part_1():
 print("PART 1")
 print(solve_part_1())
 
+# Refactor!
+# Create CRT class that contains CPU and CRT classes
+# CRT class has look that ticks
+# On each tick, it calls CPU.tick(), which updates its cycle etc.
+# CRT class feeds instructions to CPU (or maybe CPU should contain call stack)
+# Move methods that solve part 1 to CRT
+# Solve part 1
+
 # sprite is 3 pixels wide
 # x register is middle of sprite
-# Screen draws single pixel during each cpu cycle
-# screen produces # if sprite is visible or . if not
+# Screen draws single pixel during each cpu cycle, from left-to-right
+# If the sprite is positioned such that one of its three pixels is the pixel currently being drawn, the screen produces a lit pixel (#); otherwise, the screen leaves the pixel dark (.). 
+# SO need to track
+# 1: sprite position
+# 2: which pixel is being drawn (this is the cycle number)
+# for each cycle, need to determine whether any of the three pixels is positioned at index (cycle no.)
 
 # Cycle   1 -> ######################################## <- Cycle  40
 # Cycle  41 -> ######################################## <- Cycle  80
