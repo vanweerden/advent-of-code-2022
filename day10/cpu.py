@@ -2,7 +2,7 @@ from instruction import Instruction
 
 class CPU:
     def __init__(self, verbose=False):
-        self.cycle = 1
+        self.cycle = 0
         self.x = 1
         self.current_instruction = None
         self.instruction_cycles_left = 0
@@ -17,21 +17,30 @@ class CPU:
         self.total_signal_strength = 0
 
     def begin_execution(self, instruction):
+        print(f'[CPU] Beginning execution of {instruction.opcode}')
         # Begin an instruction    
         self.throw_exception_if_invalid(instruction)
         self.current_instruction = instruction
         self.instruction_cycles_left = self.opcode_duration[instruction.opcode]
 
     def tick(self):
+        print(f'[CPU] Beginning of cycle {self.cycle+1}')
+        print(f'[CPU] x: {self.x}')
+        print(f'[CPU] Cycles left for {self.current_instruction.opcode}({self.current_instruction.arg}): {self.instruction_cycles_left}')
+
         if self.instruction_cycles_left == 0:
             self.execute()
         else:
             self.instruction_cycles_left -= 1
+        print(f'[CPU] Cycle {self.cycle+1} finished')
+        self.cycle += 1
 
     def execute(self):
+        print(f'[CPU] Executing {self.current_instruction.opcode}')
         if self.current_instruction.opcode == "addx":
             v = self.current_instruction.arg
             self.addx(v)
+        self.current_instruction = None
 
         if (self._verbose_mode):
             print(f'[CPU] Cycle: { self.cycle }, x: { self.x }')

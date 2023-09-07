@@ -9,7 +9,7 @@ class DayTenTests(unittest.TestCase):
         crt = CRT()
         self.assertRaises(Exception, crt.tick)
 
-    def test_crt_run__one_instruction__cpu_cycle_increments(self):
+    def test_crt_run__addx__takes_two_cpu_cycles(self):
         stack = [Instruction("addx", 3)]
         crt = CRT(stack)
         crt.run()
