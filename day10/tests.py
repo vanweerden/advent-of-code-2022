@@ -1,19 +1,33 @@
 import unittest
 from main import *
 from crt import CRT
-from cpu import CPU
 from instruction import Instruction
 
 class DayTenTests(unittest.TestCase):
-    def test_crt_tick__empty_stack__exception_raised(self):
-        crt = CRT()
-        self.assertRaises(Exception, crt.tick)
+    basic_test_input = "test_input_basic.txt"
+    test_input = "test_input.txt"
 
-    def test_crt_run__addx__takes_two_cpu_cycles(self):
-        stack = [Instruction("addx", 3)]
-        crt = CRT(stack)
+    # Test cycles and x register with basic input
+    def test_crt_run__x_correct(self):
+        call_stack = get_call_stack(self.basic_test_input)
+        crt = CRT(call_stack)
+        
         crt.run()
-        self.assertEqual(crt.cpu.cycle, 3)
+
+        self.assertEqual(crt.cpu.x, -1)
+
+    def test_crt_run__cycle_correct(self):
+        call_stack = get_call_stack(self.basic_test_input)
+        crt = CRT(call_stack)
+        
+        crt.run()
+
+        self.assertEqual(crt.cpu.cycle, 5)
+
+    def test_get_total_signal_strength(self):
+        actual = get_total_signal_strength(self.test_input)
+
+        self.assertEqual(actual, 13140)
 
     # INFINITE LOOP!
     # def test_get_total_signal_strength(self):

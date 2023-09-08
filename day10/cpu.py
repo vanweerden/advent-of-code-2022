@@ -16,24 +16,24 @@ class CPU:
         self.valid_opcodes = ["noop", "addx"]
         self.total_signal_strength = 0
 
-    def begin_execution(self, instruction):
-        print(f'[CPU] Beginning execution of {instruction.opcode}')
+    def load_instruction(self, instruction):
+        print(f'[CPU] Loading instruction {instruction.opcode}({instruction.arg})')
         # Begin an instruction    
         self.throw_exception_if_invalid(instruction)
         self.current_instruction = instruction
         self.instruction_cycles_left = self.opcode_duration[instruction.opcode]
 
     def tick(self):
-        print(f'[CPU] Beginning of cycle {self.cycle+1}')
-        print(f'[CPU] x: {self.x}')
+        self.cycle += 1
+        print(f'[CPU] Beginning of cycle {self.cycle} (x: {self.x})')
         print(f'[CPU] Cycles left for {self.current_instruction.opcode}({self.current_instruction.arg}): {self.instruction_cycles_left}')
 
         if self.instruction_cycles_left == 0:
             self.execute()
         else:
             self.instruction_cycles_left -= 1
-        print(f'[CPU] Cycle {self.cycle+1} finished')
-        self.cycle += 1
+            
+        print(f'[CPU] Cycle {self.cycle} finished (x: {self.x})')
 
     def execute(self):
         print(f'[CPU] Executing {self.current_instruction.opcode}')

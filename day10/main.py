@@ -21,6 +21,7 @@ def get_call_stack(file_name):
     return stack
 
 # PART 1 Methods
+# TODO: I need to get x DURING the cycle. ATM it uses x AFTER it
 def get_total_signal_strength(file_name):
     call_stack = get_call_stack(file_name)
     watch_list = [20, 60, 100, 140, 180, 220]
@@ -32,15 +33,9 @@ def solve_part_1():
     print("PART 1")
     print(get_total_signal_strength("input.txt"))
 
+# TODO: Add "debug" flags to detemine which things to print
 
-# Refactor!
-# Create CRT class that contains CPU and CRT classes
-# CRT class has look that ticks
-# On each tick, it calls CPU.tick(), which updates its cycle etc.
-# CRT class feeds instructions to CPU (or maybe CPU should contain call stack)
-# Move methods that solve part 1 to CRT
-# Solve part 1
-
+# PART 2
 # sprite is 3 pixels wide
 # x register is middle of sprite
 # Screen draws single pixel during each cpu cycle, from left-to-right
