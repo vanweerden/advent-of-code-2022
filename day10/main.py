@@ -21,7 +21,7 @@ def get_call_stack(file_name):
     return stack
 
 # PART 1 Methods
-# TODO: I need to get x DURING the cycle. ATM it uses x AFTER it
+# TODO: I need to get x DURING the cycle. Current it uses x AFTER cycle
 def get_total_signal_strength(file_name):
     call_stack = get_call_stack(file_name)
     watch_list = [20, 60, 100, 140, 180, 220]
