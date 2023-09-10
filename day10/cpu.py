@@ -1,7 +1,9 @@
 from instruction import Instruction
 
 class CPU:
-    def __init__(self, debug=False):
+    debug = False
+
+    def __init__(self):
         self.cycle = 0
         self.x = 1
         self.current_instruction = None
@@ -12,7 +14,6 @@ class CPU:
             "addx": 2
         }
 
-        self.debug = debug
         self.valid_opcodes = ["noop", "addx"]
         self.total_signal_strength = 0
 
@@ -21,18 +22,20 @@ class CPU:
         self.current_instruction = instruction
         self.instruction_cycles_left = self.opcode_duration[instruction.opcode]
 
+        if self.debug:
+            print(f'Begin executing {instruction.opcode} {instruction.arg}')
+
     def begin_cycle(self):
         self.cycle += 1
 
         if self.debug:
-            print(f'[CPU] Beginning of cycle {self.cycle} (x: {self.x})')
+            print(f'[CPU] Start cycle {self.cycle} (x: {self.x})')
 
         self.instruction_cycles_left -= 1
 
     def finish_cycle(self):
         if self.debug:
             print(f'[CPU] Cycle {self.cycle} finished (x: {self.x})')
-            print(f'[CPU] Cycles left for {self.current_instruction.opcode}({self.current_instruction.arg}): {self.instruction_cycles_left}')            
         if self.instruction_cycles_left == 0:
             self.execute()
 
