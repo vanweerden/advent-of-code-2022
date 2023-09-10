@@ -21,11 +21,9 @@ def get_call_stack(file_name):
     return stack
 
 # PART 1 Methods
-# TODO: I need to get x DURING the cycle. Current it uses x AFTER cycle
 def get_total_signal_strength(file_name):
     call_stack = get_call_stack(file_name)
-    watch_list = [20, 60, 100, 140, 180, 220]
-    crt = CRT(call_stack, watch_list)
+    crt = CRT(call_stack)
     crt.run()
     return crt.total_signal_strength
 
@@ -33,7 +31,7 @@ def solve_part_1():
     print("PART 1")
     print(get_total_signal_strength("input.txt"))
 
-# TODO: Add "debug" flags to detemine which things to print
+print(solve_part_1())
 
 # PART 2
 # sprite is 3 pixels wide
